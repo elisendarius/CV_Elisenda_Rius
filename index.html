@@ -4,830 +4,191 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Elisenda Rius-Vilarrasa</title>
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Epilogue:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@300;400;700&family=Epilogue:wght@300;400;500&display=swap');
 
-:root {
-  --bg-en: #ffffff;
-  --bg-sv: #f2f0eb;
-  --ink: #111111;
-  --mid: #444444;
-  --muted: #888888;
-  --accent: #2d5f3f;
-  --accent-light: #e8f0ea;
-  --rule: #dddddd;
-  --card: #f9f8f6;
-  --transition: 0.35s ease;
+:root{
+  --bg:#fff;
+  --ink:#111;
+  --mid:#444;
+  --muted:#888;
+  --accent:#2d5f3f;
+  --accent-light:#e8f0ea;
+  --rule:#ddd;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { font-size: 16px; scroll-behavior: smooth; }
-
-body {
-  font-family: 'Epilogue', sans-serif;
-  font-weight: 300;
-  color: var(--ink);
-  background: var(--bg-en);
-  transition: background var(--transition);
-  min-height: 100vh;
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Epilogue,sans-serif;
+  color:var(--ink);
+  background:var(--bg);
 }
 
-body.lang-sv { background: var(--bg-sv); }
-
-/* ── BILINGUAL ── */
-[data-lang]          { display: none; }
-span[data-lang]      { display: none; }
-li[data-lang]        { display: none; }
-
-body.lang-en [data-lang="en"]      { display: revert; }
-body.lang-sv [data-lang="sv"]      { display: revert; }
-body.lang-en span[data-lang="en"]  { display: inline; }
-body.lang-sv span[data-lang="sv"]  { display: inline; }
-body.lang-en li[data-lang="en"]    { display: list-item; }
-body.lang-sv li[data-lang="sv"]    { display: list-item; }
-
-/* ── TOP BAR ── */
-.topbar {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.75rem 2.5rem;
-  border-bottom: 1px solid var(--rule);
-  transition: background var(--transition);
+/* ---------- layout ---------- */
+.main{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:3rem;
+  padding:3rem 2rem;
 }
 
-body.lang-en .topbar { background: var(--bg-en); }
-body.lang-sv .topbar { background: var(--bg-sv); }
+/* ---------- sidebar ---------- */
+.sidebar-block{margin-bottom:2rem}
 
-.topbar-left {
-  font-family: 'Fraunces', serif;
-  font-size: 0.85rem;
-  font-weight: 300;
-  color: var(--muted);
-  letter-spacing: 0.02em;
+.sidebar-label{
+  font-size:.65rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  border-bottom:1px solid var(--rule);
+  padding-bottom:.4rem;
+  margin-bottom:.8rem;
 }
 
-.topbar-right { display: flex; align-items: center; gap: 0.75rem; }
+/* ---------- contact ---------- */
+.sidebar-contact{display:grid;gap:.5rem;font-size:.85rem;color:var(--mid)}
 
-.lang-pill {
-  display: flex;
-  border: 1.5px solid var(--rule);
-  border-radius: 99px;
-  overflow: hidden;
+.contact-row{
+  display:flex;
+  gap:.6rem;
+  align-items:flex-start;
 }
 
-.lang-btn {
-  font-family: 'Epilogue', sans-serif;
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0.3rem 0.85rem;
-  border: none;
-  background: none;
-  cursor: pointer;
-  color: var(--muted);
-  transition: background 0.2s, color 0.2s;
+.contact-ico{
+  width:18px;
+  height:18px;
+  flex-shrink:0;
+  color:#111;            /* ← force black icons */
 }
 
-.lang-btn.active { background: var(--accent); color: #fff; }
-.lang-btn:not(.active):hover { background: var(--accent-light); color: var(--accent); }
-
-/* Link-style button (used for PDF + certificate link) */
-.dl-btn {
-  background: none;
-  border: none;
-  padding: 0;
-  font: inherit;
-  color: #0a66c2;
-  text-decoration: underline;
-  cursor: pointer;
-}
-.dl-btn:hover { color: var(--accent); }
-
-/* ── HERO ── */
-.hero {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: 3rem;
-  padding: 4rem 2.5rem 3rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  border-bottom: 1px solid var(--rule);
+.contact-ico svg{
+  width:100%;
+  height:100%;
+  stroke:currentColor;
+  fill:none;
 }
 
-.hero-name {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(2.8rem, 5vw, 4.5rem);
-  font-weight: 700;
-  line-height: 1.0;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  margin-bottom: 0.6rem;
+.contact-ico svg.fill{fill:currentColor;stroke:none}
+
+.sidebar-contact a{
+  color:var(--mid);
+  text-decoration:none;
+  border-bottom:1px solid var(--rule);
+}
+.sidebar-contact a:hover{
+  color:var(--accent);
+  border-color:var(--accent);
 }
 
-.hero-title {
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--accent);
-  margin-bottom: 1.5rem;
-  letter-spacing: 0.01em;
+/* ---------- content ---------- */
+.content h2{
+  font-family:Fraunces,serif;
+  font-weight:400;
+  margin-bottom:.6rem;
 }
-
-.hero-photo {
-  width: 130px;
-  height: 130px;
-  border-radius: 12px;
-  object-fit: cover;
-  object-position: center top;
-  display: block;
-  border: 1px solid var(--rule);
-}
-
-/* ── MAIN GRID ── */
-.main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2.5rem 5rem;
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 0 3rem;
-  align-items: start;
-}
-
-/* ── SIDEBAR ── */
-.sidebar {
-  padding-top: 2.5rem;
-  position: sticky;
-  top: 57px;
-}
-
-.sidebar-block { margin-bottom: 2rem; }
-
-.sidebar-label {
-  font-size: 0.62rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 0.75rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 1px solid var(--rule);
-}
-
-.sidebar-text {
-  font-size: 0.9rem;
-  color: var(--mid);
-  line-height: 1.65;
-}
-
-/* sidebar contact */
-.sidebar-contact {
-  font-size: 0.82rem;
-  color: var(--mid);
-  line-height: 1.6;
-  display: grid;
-  gap: 0.35rem;
-}
-
-.contact-row {
-  display: grid;
-  grid-template-columns: 16px 1fr;
-  gap: 0.55rem;
-  align-items: start;
-}
-
-.contact-ico {
-  width: 16px;
-  height: 16px;
-  line-height: 16px;
-  font-size: 0.9rem; /* emoji size */
-  color: var(--accent);
-}
-
-.sidebar-contact a {
-  color: var(--mid);
-  text-decoration: none;
-  border-bottom: 1px solid var(--rule);
-  width: fit-content;
-}
-
-.sidebar-contact a:hover {
-  color: var(--accent);
-  border-color: var(--accent);
-}
-
-.lang-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 0.35rem 0;
-  border-bottom: 1px solid #eeeeee;
-  font-size: 0.88rem;
-}
-
-.lang-row:last-child { border-bottom: none; }
-.lang-row span:last-child {
-  font-size: 0.7rem;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-/* ── CONTENT ── */
-.content { padding-top: 2.5rem; }
-
-.section-block {
-  margin-bottom: 1.5rem;
-  border-radius: 10px;
-  border: 1px solid var(--rule);
-  overflow: hidden;
-  transition: border-color 0.2s;
-}
-
-.section-block:hover { border-color: #bbbbbb; }
-
-.section-header {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 1.5rem;
-  background: var(--card);
-  border-bottom: 1px solid var(--rule);
-}
-
-body.lang-sv .section-header { background: #eeede8; }
-
-.section-icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  background: var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  font-size: 0.8rem;
-  color: #fff;
-}
-
-.section-title {
-  font-family: 'Fraunces', serif;
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--ink);
-  letter-spacing: 0.01em;
-}
-
-.section-body { padding: 1.5rem; }
-
-/* Profile */
-.profile-text {
-  font-size: 0.97rem;
-  line-height: 1.75;
-  color: var(--mid);
-  margin-bottom: 0.85rem;
-}
-.profile-text:last-child { margin-bottom: 0; }
-
-/* Competency groups */
-.comp-cols {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.25rem 2rem;
-}
-
-.comp-group-title {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 0.5rem;
-}
-
-.comp-list { list-style: none; }
-.comp-list li {
-  font-size: 0.88rem;
-  color: var(--mid);
-  padding: 0.22rem 0 0.22rem 1rem;
-  position: relative;
-  line-height: 1.5;
-  border-bottom: 1px solid #f0f0f0;
-}
-.comp-list li:last-child { border-bottom: none; }
-.comp-list li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 5px;
-  height: 1.5px;
-  background: var(--accent);
-  transform: translateY(-50%);
-}
-
-/* Role */
-.role-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-  margin-bottom: 0.2rem;
-}
-
-.role-title {
-  font-family: 'Fraunces', serif;
-  font-size: 1.05rem;
-  font-weight: 400;
-  color: var(--ink);
-}
-
-.role-dates {
-  font-size: 0.72rem;
-  color: var(--muted);
-  white-space: nowrap;
-  flex-shrink: 0;
-  font-weight: 400;
-}
-
-.role-org {
-  font-size: 0.82rem;
-  color: var(--accent);
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 0.75rem;
-}
-
-.role-summary {
-  font-size: 0.9rem;
-  color: var(--mid);
-  line-height: 1.7;
-  margin-bottom: 1.25rem;
-  padding-bottom: 1.25rem;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.sub-blocks {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-.sub-block {
-  background: var(--accent-light);
-  border-radius: 8px;
-  padding: 0.85rem 1rem;
-}
-
-body.lang-sv .sub-block { background: #e4e2db; }
-
-.sub-title {
-  font-size: 0.62rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 0.5rem;
-}
-
-.sub-list { list-style: none; margin: 0; padding-left: 0; }
-.sub-list li {
-  font-size: 0.83rem;
-  color: var(--mid);
-  line-height: 1.5;
-  padding: 0.18rem 0 0.18rem 0.85rem;
-  position: relative;
-}
-.sub-list li::before {
-  content: '·';
-  position: absolute;
-  left: 0;
-  color: var(--accent);
-  font-size: 1rem;
-  line-height: 1.35;
-}
-
-/* Education rows */
-.edu-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-  padding: 0.65rem 0;
-  border-bottom: 1px solid #f0f0f0;
-}
-.edu-row:last-child { border-bottom: none; }
-.edu-degree { font-size: 0.95rem; font-weight: 400; color: var(--ink); }
-.edu-school { font-size: 0.8rem; color: var(--muted); font-style: italic; margin-top: 0.1rem; }
-.edu-year { font-size: 0.72rem; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
-
-/* ── FOOTER ── */
-.footer {
-  text-align: center;
-  font-size: 0.7rem;
-  color: var(--muted);
-  letter-spacing: 0.1em;
-  padding: 1.5rem 0 2.5rem;
-  border-top: 1px solid var(--rule);
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
-}
-
-/* ── PRINT ── */
-@media print {
-  .topbar { display: none; }
-  body { background: #fff !important; font-size: 12px; }
-  .main { grid-template-columns: 220px 1fr; gap: 0 2rem; }
-  .sidebar { position: static; }
-  .section-block { border: 1px solid #ddd; page-break-inside: avoid; }
-  .sub-blocks { grid-template-columns: 1fr 1fr; }
-  .hero { padding: 2rem 1.5rem; }
-  .main { padding: 0 1.5rem 2rem; }
-}
-
-/* ── RESPONSIVE ── */
-@media (max-width: 860px) {
-  .hero { grid-template-columns: 1fr; }
-  .hero-photo { width: 90px; height: 90px; }
-  .main { grid-template-columns: 1fr; }
-  .sidebar { position: static; }
-  .comp-cols { grid-template-columns: 1fr; }
-  .sub-blocks { grid-template-columns: 1fr; }
-  .topbar { padding: 0.65rem 1.25rem; }
-  .hero { padding: 2.5rem 1.25rem 2rem; }
-  .main { padding: 0 1.25rem 4rem; }
-}
+.content p{color:var(--mid);line-height:1.7}
 </style>
 </head>
 
-<body class="lang-en">
+<body>
 
-<!-- TOP BAR -->
-<div class="topbar">
-  <span class="topbar-left">Elisenda Rius-Vilarrasa</span>
-  <div class="topbar-right">
-    <div class="lang-pill">
-      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" id="btn-sv" onclick="setLang('sv')">SV</button>
-    </div>
-    <button class="dl-btn" onclick="window.print()">↓ PDF</button>
-  </div>
-</div>
-
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-text">
-    <div class="hero-name">Elisenda<br>Rius-Vilarrasa</div>
-    <div class="hero-title">
-      <span data-lang="en">Principal Geneticist · Research Coordinator</span>
-      <span data-lang="sv">Huvudgenetiker · Forskningssamordnare</span>
-    </div>
-    <!-- Contact moved to sidebar -->
-  </div>
-  <img class="hero-photo" src="assets/eli.png" alt="Elisenda Rius-Vilarrasa">
-</div>
-
-<!-- MAIN -->
 <div class="main">
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
+<!-- ================= SIDEBAR ================= -->
+<aside>
 
-    <!-- CONTACT -->
-    <div class="sidebar-block">
-      <div class="sidebar-label"><span data-lang="en">Contact</span><span data-lang="sv">Kontakt</span></div>
-      <div class="sidebar-contact">
-        <div class="contact-row">
-          <div class="contact-ico" aria-hidden="true">📍</div>
-          <div>
-            <div>Henry Säldes väg 9</div>
-            <div>Uppsala, Sweden</div>
-          </div>
-        </div>
+<!-- CONTACT -->
+<div class="sidebar-block">
+<div class="sidebar-label">Contact</div>
 
-        <div class="contact-row">
-          <div class="contact-ico" aria-hidden="true">☎️</div>
-          <div>+46 76 103 48 01</div>
-        </div>
+<div class="sidebar-contact">
 
-        <div class="contact-row">
-          <div class="contact-ico" aria-hidden="true">✉️</div>
-          <div><a href="mailto:rius.eli@gmail.com">rius.eli@gmail.com</a></div>
-        </div>
-
-        <div class="contact-row">
-          <div class="contact-ico" aria-hidden="true">
-            <!-- GitHub mark (inline SVG) -->
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path d="M12 .5C5.73.5.75 5.69.75 12.1c0 5.18 3.44 9.58 8.21 11.13.6.12.82-.27.82-.58 0-.29-.01-1.05-.02-2.06-3.34.75-4.04-1.66-4.04-1.66-.55-1.44-1.34-1.83-1.34-1.83-1.1-.77.08-.76.08-.76 1.22.09 1.86 1.3 1.86 1.3 1.08 1.9 2.84 1.35 3.53 1.03.11-.8.42-1.35.76-1.66-2.66-.31-5.46-1.37-5.46-6.12 0-1.35.46-2.45 1.22-3.32-.12-.31-.53-1.57.12-3.27 0 0 1-.33 3.3 1.27a11.1 11.1 0 0 1 3-.42c1.02 0 2.05.14 3 .42 2.3-1.6 3.3-1.27 3.3-1.27.65 1.7.24 2.96.12 3.27.76.87 1.22 1.97 1.22 3.32 0 4.77-2.8 5.8-5.47 6.11.43.38.81 1.12.81 2.26 0 1.64-.02 2.95-.02 3.35 0 .32.22.71.82.58 4.78-1.55 8.21-5.95 8.21-11.13C23.25 5.69 18.27.5 12 .5z"/>
-            </svg>
-          </div>
-          <div><a href="https://github.com/elisendarius" target="_blank">github.com/elisendarius</a></div>
-        </div>
-
-        <div class="contact-row">
-          <div class="contact-ico" aria-hidden="true">
-            <!-- LinkedIn mark (inline SVG) -->
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.446-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.369-1.852 3.603 0 4.267 2.372 4.267 5.458v6.285zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zM6.813 20.452H3.861V9h2.952v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
-          </div>
-          <div><a href="https://www.linkedin.com/in/elisenda-rius-vilarrasa-35a38726/" target="_blank">LinkedIn</a></div>
-        </div>
-
-        <div class="contact-row">
-          <div class="contact-ico" aria-hidden="true">🎓</div>
-          <div><a href="https://certificate.berghs.com/kursintyg-elisenda-rius-vilarrasa-112865-ux-and-digital-product-design-a0067000026p2rvaas/?zone=truecrt&lang=en" target="_blank">Certificate UX and Digital Product Design</a></div>
-        </div>
-
-        <div class="contact-row">
-          <div class="contact-ico" aria-hidden="true">📄</div>
-          <div><a class="dl-btn" href="assets/certificate_VyS_Elisenda_Rius.pdf" download>Certificate Visualise your Science</a></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- EDUCATION (moved before Languages) -->
-    <div class="sidebar-block">
-      <div class="sidebar-label"><span data-lang="en">Education</span><span data-lang="sv">Utbildning</span></div>
-
-      <div class="edu-row">
-        <div>
-          <div class="edu-degree"><span data-lang="en">UX and Digital Product Design</span><span data-lang="sv">UX och Digital Produkt Design</span></div>
-          <div class="edu-school">Berghs School of Communication, Sweden</div>
-        </div>
-        <div class="edu-year">2023–05</div>
-      </div>
-
-      <div class="edu-row">
-        <div>
-          <div class="edu-degree"><span data-lang="en">PhD, Quantitative Genetics</span><span data-lang="sv">Doktorsexamen, kvantitativ genetik</span></div>
-          <div class="edu-school">University of Edinburgh, UK</div>
-        </div>
-        <div class="edu-year">2005–09</div>
-      </div>
-
-      <div class="edu-row">
-        <div>
-          <div class="edu-degree"><span data-lang="en">MSc, Bioinformatics</span><span data-lang="sv">Masterexamen, bioinformatik</span></div>
-          <div class="edu-school">Cranfield University, UK</div>
-        </div>
-        <div class="edu-year">2004–05</div>
-      </div>
-
-      <div class="edu-row">
-        <div>
-          <div class="edu-degree"><span data-lang="en">Agronomist (BSc+MSc, 5 yr)</span><span data-lang="sv">Agronomexamen (5 år)</span></div>
-          <div class="edu-school">Universitat Politècnica de LLeida, Spain</div>
-        </div>
-        <div class="edu-year">1998–03</div>
-      </div>
-    </div>
-
-    <!-- LANGUAGES (moved after Education) -->
-    <div class="sidebar-block">
-      <div class="sidebar-label"><span data-lang="en">Languages</span><span data-lang="sv">Språk</span></div>
-      <div class="lang-row"><span><span data-lang="en">Catalan</span><span data-lang="sv">Katalanska</span></span><span><span data-lang="en">Native</span><span data-lang="sv">Modersmål</span></span></div>
-      <div class="lang-row"><span><span data-lang="en">Spanish</span><span data-lang="sv">Spanska</span></span><span><span data-lang="en">bilingual profeciency</span><span data-lang="sv">Modersmål</span></span></div>
-      <div class="lang-row"><span><span data-lang="en">English</span><span data-lang="sv">Engelska</span></span><span><span data-lang="en">Professional working proficiency</span><span data-lang="sv">Professionell arbetsförmåga</span></span></div>
-      <div class="lang-row"><span><span data-lang="en">Swedish</span><span data-lang="sv">Svenska</span></span><span><span data-lang="en">Professional working proficiency</span><span data-lang="sv">Professionell arbetsförmåga</span></span></div>
-      
-      </div>
-
-    <div class="sidebar-block">
-      <div class="sidebar-label"><span data-lang="en">References</span><span data-lang="sv">Referenser</span></div>
-      <div class="sidebar-text" style="font-style:italic">
-        <span data-lang="en">Available on request.</span>
-        <span data-lang="sv">Lämnas på begäran.</span>
-      </div>
-    </div>
-
-  </aside>
-
-  <!-- CONTENT -->
-  <div class="content">
-
-    <!-- Profile -->
-    <div class="section-block">
-      <div class="section-header">
-        <div class="section-icon">✦</div>
-        <div class="section-title"><span data-lang="en">Profile</span><span data-lang="sv">Om mig</span></div>
-      </div>
-      <div class="section-body">
-        <p class="profile-text" data-lang="en">I lead and coordinate research collaborations across organisations and countries, translating science into applied practice. I ensure work is carried out in line with project goals, timelines and budgets — and that activities are coordinated to create genuine synergies between partners.</p>
-        <p class="profile-text" data-lang="sv">Arbetar med utvecklingsprojekt för praktisk implementering där forskning omsätts i tillämpning. Leder och samordnar forskningssamarbeten mellan organisationer och länder och säkerställer att arbetet genomförs i linje med projektens mål, tidplan och budget.</p>
-        <p class="profile-text" data-lang="en">As senior geneticist I provide scientific and methodological support, contribute strategic input to management decisions, and am responsible for technical development and quality assurance within the genetics group.</p>
-        <p class="profile-text" data-lang="sv">Som senior genetiker fungerar jag som stöd i vetenskapliga och metodologiska frågor, bidrar med strategiska underlag till ledningsbeslut och ansvarar för teknisk och kompetensutveckling inom genetikergruppen, med ansvar för kvalitetssäkring och projektens vetenskapliga resultat.</p>
-      </div>
-    </div>
-
-    <!-- Competencies -->
-    <div class="section-block">
-      <div class="section-header">
-        <div class="section-icon">◈</div>
-        <div class="section-title"><span data-lang="en">Competencies</span><span data-lang="sv">Kompetenser</span></div>
-      </div>
-      <div class="section-body">
-        <div class="comp-cols">
-          <div>
-            <div class="comp-group-title"><span data-lang="en">Research coordination &amp; strategy</span><span data-lang="sv">Forskningssamordning och strategi</span></div>
-            <ul class="comp-list">
-              <li data-lang="en">Scientific leadership and methodological responsibility</li>
-              <li data-lang="en">Research strategy and R&amp;D prioritisation</li>
-              <li data-lang="en">Initiation and development of research partnerships</li>
-              <li data-lang="en">Scientific communication and decision support</li>
-              <li data-lang="en">Multi-project planning across countries</li>
-              <li data-lang="en">National and international research coordination</li>
-
-              <li data-lang="sv">Vetenskapligt ledarskap och metodologiskt ansvar</li>
-              <li data-lang="sv">Forskningsstrategi och prioritering av FoU-insatser</li>
-              <li data-lang="sv">Initiering och utveckling av forskningssamarbeten</li>
-              <li data-lang="sv">Vetenskaplig kommunikation och beslutsstöd</li>
-              <li data-lang="sv">Planering av vetenskapligt arbete över flera projekt och länder</li>
-              <li data-lang="sv">Samordning i nationell och internationell samverkan</li>
-            </ul>
-          </div>
-
-          <div>
-            <div class="comp-group-title"><span data-lang="en">Data, analysis &amp; capacity</span><span data-lang="sv">Dataanalys och kapacitetsutveckling</span></div>
-            <ul class="comp-list">
-              <li data-lang="en">Quality assurance of analyses and results</li>
-              <li data-lang="en">Synthesis of complex scientific information</li>
-              <li data-lang="en">Structured work with parallel workflows</li>
-              <li data-lang="en">External examiner and peer review</li>
-              <li data-lang="en">Mentoring and competency development</li>
-              <li data-lang="en">Scientific design and data visualisation</li>
-
-              <li data-lang="sv">Uppföljning och kvalitetssäkring av analyser och resultat</li>
-              <li data-lang="sv">Syntes av komplex vetenskaplig information</li>
-              <li data-lang="sv">Strukturerat arbete med parallella arbetsflöden</li>
-              <li data-lang="sv">Extern sakkunnig och peer review</li>
-              <li data-lang="sv">Mentorskap och kompetensutveckling</li>
-              <li data-lang="sv">Vetenskaplig design och visualisering</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Experience -->
-    <div class="section-block">
-      <div class="section-header">
-        <div class="section-icon">▸</div>
-        <div class="section-title"><span data-lang="en">Experience</span><span data-lang="sv">Erfarenhet</span></div>
-      </div>
-
-      <div class="section-body">
-        <!-- Växa -->
-        <div class="role-header">
-          <div class="role-title">
-            <span data-lang="en">Principal Geneticist — Scientific Lead</span>
-            <span data-lang="sv">Huvudgenetiker — Vetenskaplig ledare</span>
-          </div>
-          <div class="role-dates">2014 – <span data-lang="en">present</span><span data-lang="sv">pågående</span></div>
-        </div>
-        <div class="role-org">Växa Sverige</div>
-
-        <p class="role-summary">
-          <span data-lang="en">Research coordination, prioritisation and quality assurance in national and international collaboration. Functional scientific leadership covering methodology, quality and prioritisation — without line management or HR responsibilities.</span>
-          <span data-lang="sv">Samordning, prioritering och kvalitetssäkring av forsknings- och analysverksamhet i nationell och internationell samverkan. Funktionellt vetenskapligt ledarskap utan personalansvar eller linjeledning.</span>
-        </p>
-
-        <div class="sub-blocks" style="margin-bottom:1.25rem;">
-          <div class="sub-block">
-            <div class="sub-title"><span data-lang="en">Coordination &amp; governance</span><span data-lang="sv">Samordning och styrning</span></div>
-            <ul class="sub-list">
-              <li data-lang="en">Coordinate research activities across organisations and countries</li>
-              <li data-lang="en">Plan and prioritise work across parallel projects</li>
-              <li data-lang="en">Initiate and develop international research collaborations</li>
-
-              <li data-lang="sv">Samordnar aktiviteter mellan organisationer och länder</li>
-              <li data-lang="sv">Planerar och prioriterar parallella projekt</li>
-              <li data-lang="sv">Initierar och utvecklar internationella samarbeten</li>
-            </ul>
-          </div>
-
-          <div class="sub-block">
-            <div class="sub-title"><span data-lang="en">Quality &amp; monitoring</span><span data-lang="sv">Kvalitet och uppföljning</span></div>
-            <ul class="sub-list">
-              <li data-lang="en">Review analyses, assumptions and scientific documentation</li>
-              <li data-lang="en">Ensure robustness and reproducibility of results</li>
-              <li data-lang="en">Track project progress across timelines and budgets</li>
-
-              <li data-lang="sv">Granskar analyser, antaganden och dokumentation</li>
-              <li data-lang="sv">Säkerställer robusthet och reproducerbarhet</li>
-              <li data-lang="sv">Följer upp projektprogression mot mål och budget</li>
-            </ul>
-          </div>
-
-          <div class="sub-block">
-            <div class="sub-title"><span data-lang="en">Analysis &amp; decision support</span><span data-lang="sv">Analys och beslutsstöd</span></div>
-            <ul class="sub-list">
-              <li data-lang="en">Synthesise scientific findings into management decision materials</li>
-              <li data-lang="en">Provide strategic input for research prioritisation</li>
-
-              <li data-lang="sv">Syntetiserar vetenskapliga resultat till beslutsunderlag</li>
-              <li data-lang="sv">Bidrar med strategiska underlag för prioritering</li>
-            </ul>
-          </div>
-
-          <div class="sub-block">
-            <div class="sub-title"><span data-lang="en">Capacity &amp; networks</span><span data-lang="sv">Kapacitet och nätverk</span></div>
-            <ul class="sub-list">
-              <li data-lang="en">Methodological support and mentoring within genetics group</li>
-              <li data-lang="en">Participate in doctoral training and peer review</li>
-              <li data-lang="en">Active in international research networks</li>
-
-              <li data-lang="sv">Metod- och analysstöd och mentorskap inom gruppen</li>
-              <li data-lang="sv">Medverkar i forskarutbildning och peer review</li>
-              <li data-lang="sv">Aktiv i internationella forskningsnätverk</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Postdoc SLU -->
-        <div class="role-header">
-          <div class="role-title">
-            <span data-lang="en">Postdoctoral Researcher</span>
-            <span data-lang="sv">Postdoktor</span>
-          </div>
-          <div class="role-dates">2010 – 2014</div>
-        </div>
-        <div class="role-org">Sveriges lantbruksuniversitet (SLU)</div>
-
-        <div class="sub-blocks" style="margin-bottom:1.25rem;">
-          <div class="sub-block">
-            <div class="sub-title"><span data-lang="en">Methods &amp; implementation</span><span data-lang="sv">Metod och implementering</span></div>
-            <ul class="sub-list">
-              <li data-lang="en">Developed statistical models leveraging DNA information for genomic analysis and applied decision support.</li>
-              <li data-lang="en">Implemented methods in practice with partners to ensure usable outputs and adoption.</li>
-
-              <li data-lang="sv">Utvecklade statistiska modeller baserade på DNA-information för genomisk analys och praktiskt beslutsstöd.</li>
-              <li data-lang="sv">Implementerade metoder i nära samverkan med partners för att säkerställa användbara resultat och tillämpning.</li>
-            </ul>
-          </div>
-
-          <div class="sub-block">
-            <div class="sub-title"><span data-lang="en">Leadership &amp; funding</span><span data-lang="sv">Ledarskap och finansiering</span></div>
-            <ul class="sub-list">
-              <li data-lang="en">Principal researcher; secured research funding and led delivery against objectives.</li>
-              <li data-lang="en">Developed a sustainability index concept to support improved sow longevity at farm level.</li>
-
-              <li data-lang="sv">Huvudansvarig forskare; säkrade finansiering och ledde genomförandet mot uppsatta mål.</li>
-              <li data-lang="sv">Utvecklade koncept för hållbarhetsindex för förbättrad sugglivslängd på gårdsnivå.</li>
-            </ul>
-          </div>
-
-          <div class="sub-block">
-            <div class="sub-title"><span data-lang="en">Collaboration</span><span data-lang="sv">Samverkan</span></div>
-            <ul class="sub-list">
-              <li data-lang="en">Worked at the interface of academia, industry and cooperative stakeholders.</li>
-              <li data-lang="en">Translated complex genomics into actionable practices and communication materials.</li>
-
-              <li data-lang="sv">Arbetade i gränslandet mellan akademi, näringsliv och kooperativa aktörer.</li>
-              <li data-lang="sv">Omsatte komplex genomik till tillämpning och kommunikativa underlag.</li>
-            </ul>
-          </div>
-
-          <div class="sub-block">
-            <div class="sub-title"><span data-lang="en">Awards &amp; exchange</span><span data-lang="sv">Utmärkelse och utbyte</span></div>
-            <ul class="sub-list">
-              <li data-lang="en">Recipient of Knut and Alice Wallenberg Foundation award.</li>
-              <li data-lang="en">Research exchange at INIA (Spain) focused on alternative statistical approaches for DNA/genomic data.</li>
-
-              <li data-lang="sv">Mottagare av Knut och Alice Wallenbergs Stiftelses award.</li>
-              <li data-lang="sv">Forskningsutbyte vid INIA (Spanien) med fokus på alternativa statistiska metoder för DNA-/genomiska data.</li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  </div><!-- /content -->
-</div><!-- /main -->
-
-<div class="footer">
-  Elisenda Rius-Vilarrasa &nbsp;·&nbsp; Uppsala, Sweden &nbsp;·&nbsp; 2026
+<div class="contact-row">
+<div class="contact-ico">
+<!-- location -->
+<svg viewBox="0 0 24 24">
+<path d="M12 21s7-4.4 7-11a7 7 0 0 0-14 0c0 6.6 7 11 7 11z" stroke-width="1.8"/>
+<circle cx="12" cy="10" r="2.5" stroke-width="1.8"/>
+</svg>
+</div>
+<div>Henry Säldes väg 9<br>Uppsala, Sweden</div>
 </div>
 
-<script>
-  function setLang(lang) {
-    document.body.className = 'lang-' + lang;
-    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-    document.getElementById('btn-sv').classList.toggle('active', lang === 'sv');
-    document.documentElement.lang = lang;
-  }
-</script>
+<div class="contact-row">
+<div class="contact-ico">
+<!-- phone -->
+<svg viewBox="0 0 24 24">
+<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6.4 6.4l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6A2 2 0 0 1 22 16.9z" stroke-width="1.8"/>
+</svg>
+</div>
+<div>+46 76 103 48 01</div>
+</div>
 
+<div class="contact-row">
+<div class="contact-ico">
+<!-- email -->
+<svg viewBox="0 0 24 24">
+<rect x="3" y="5" width="18" height="14" rx="2" stroke-width="1.8"/>
+<path d="m3 7 9 6 9-6" stroke-width="1.8"/>
+</svg>
+</div>
+<div><a href="mailto:rius.eli@gmail.com">rius.eli@gmail.com</a></div>
+</div>
+
+<div class="contact-row">
+<div class="contact-ico">
+<!-- github -->
+<svg class="fill" viewBox="0 0 24 24">
+<path d="M12 .5A12 12 0 0 0 8.2 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6a3.1 3.1 0 0 0-1.3-1.7c-1-.7.1-.7.1-.7a2.5 2.5 0 0 1 1.9 1.2 2.5 2.5 0 0 0 3.5 1 2.5 2.5 0 0 1 .7-1.6c-2.7-.3-5.5-1.4-5.5-6.2A4.8 4.8 0 0 1 5.6 7a4.5 4.5 0 0 1 .1-3.2s1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 3.5 18.3 3.8 18.3 3.8a4.5 4.5 0 0 1 .1 3.2 4.8 4.8 0 0 1 1.3 3.3c0 4.9-2.8 5.9-5.5 6.2a2.8 2.8 0 0 1 .8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/>
+</svg>
+</div>
+<div><a href="https://github.com/elisendarius" target="_blank">GitHub</a></div>
+</div>
+
+<div class="contact-row">
+<div class="contact-ico">
+<!-- linkedin -->
+<svg class="fill" viewBox="0 0 24 24">
+<path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM6.81 20.45H3.86V9h2.95z"/>
+</svg>
+</div>
+<div><a href="https://www.linkedin.com/in/elisenda-rius-vilarrasa-35a38726/" target="_blank">LinkedIn</a></div>
+</div>
+
+</div>
+</div>
+
+<!-- EDUCATION -->
+<div class="sidebar-block">
+<div class="sidebar-label">Education</div>
+<div>PhD Quantitative Genetics — University of Edinburgh</div>
+<div>MSc Bioinformatics — Cranfield University</div>
+<div>Agronomist — Universitat Politècnica de Lleida</div>
+</div>
+
+<!-- LANGUAGES -->
+<div class="sidebar-block">
+<div class="sidebar-label">Languages</div>
+<div>Catalan — Native</div>
+<div>Spanish — Native</div>
+<div>English — Fluent</div>
+<div>Swedish — Professional</div>
+</div>
+
+</aside>
+
+<!-- ================= CONTENT ================= -->
+<div class="content">
+<h2>Profile</h2>
+<p>
+Principal geneticist specialising in applied genomics, research coordination,
+and international collaboration. Translating complex data into practical impact.
+</p>
+</div>
+
+</div>
 </body>
 </html>
