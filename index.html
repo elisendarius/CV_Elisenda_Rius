@@ -107,8 +107,6 @@ body.lang-sv .topbar { background: var(--bg-sv); }
   text-decoration: underline;
   cursor: pointer;
 }
-
-/* remove background hover to keep it link-like */
 .dl-btn:hover { color: var(--accent); }
 
 /* ── HERO ── */
@@ -188,13 +186,28 @@ body.lang-sv .topbar { background: var(--bg-sv); }
   line-height: 1.65;
 }
 
-/* NEW: sidebar contact */
+/* sidebar contact */
 .sidebar-contact {
   font-size: 0.82rem;
   color: var(--mid);
   line-height: 1.6;
   display: grid;
   gap: 0.35rem;
+}
+
+.contact-row {
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  gap: 0.55rem;
+  align-items: start;
+}
+
+.contact-ico {
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  font-size: 0.9rem; /* emoji size */
+  color: var(--accent);
 }
 
 .sidebar-contact a {
@@ -489,29 +502,51 @@ body.lang-sv .sub-block { background: #e4e2db; }
   <!-- SIDEBAR -->
   <aside class="sidebar">
 
-    <!-- NEW: CONTACT (before Languages) -->
+    <!-- CONTACT -->
     <div class="sidebar-block">
       <div class="sidebar-label"><span data-lang="en">Contact</span><span data-lang="sv">Kontakt</span></div>
       <div class="sidebar-contact">
-        <span>Uppsala, Sweden</span>
-        <span>+46 76 103 48 01</span>
-        <a href="mailto:rius.eli@gmail.com">rius.eli@gmail.com</a>
-        <a href="https://github.com/elisendarius" target="_blank">github.com/elisendarius</a>
-        <a href="https://www.linkedin.com/in/elisenda-rius-vilarrasa-35a38726/" target="_blank">LinkedIn</a>
-        <a href="https://certificate.berghs.com/kursintyg-elisenda-rius-vilarrasa-112865-ux-and-digital-product-design-a0067000026p2rvaas/?zone=truecrt&lang=en" target="_blank">Certificate UX and Digital Product Design</a>
-        <a class="dl-btn" href="assets/certificate_VyS_Elisenda_Rius.pdf" download>Certificate Visualise your Science</a>
+        <div class="contact-row">
+          <div class="contact-ico" aria-hidden="true">📍</div>
+          <div>
+            <div>Henry Säldes väg 9</div>
+            <div>Uppsala, Sweden</div>
+          </div>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-ico" aria-hidden="true">☎️</div>
+          <div>+46 76 103 48 01</div>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-ico" aria-hidden="true">✉️</div>
+          <div><a href="mailto:rius.eli@gmail.com">rius.eli@gmail.com</a></div>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-ico" aria-hidden="true">🐙</div>
+          <div><a href="https://github.com/elisendarius" target="_blank">github.com/elisendarius</a></div>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-ico" aria-hidden="true">🔗</div>
+          <div><a href="https://www.linkedin.com/in/elisenda-rius-vilarrasa-35a38726/" target="_blank">LinkedIn</a></div>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-ico" aria-hidden="true">🎓</div>
+          <div><a href="https://certificate.berghs.com/kursintyg-elisenda-rius-vilarrasa-112865-ux-and-digital-product-design-a0067000026p2rvaas/?zone=truecrt&lang=en" target="_blank">Certificate UX and Digital Product Design</a></div>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-ico" aria-hidden="true">📄</div>
+          <div><a class="dl-btn" href="assets/certificate_VyS_Elisenda_Rius.pdf" download>Certificate Visualise your Science</a></div>
+        </div>
       </div>
     </div>
 
-    <div class="sidebar-block">
-      <div class="sidebar-label"><span data-lang="en">Languages</span><span data-lang="sv">Språk</span></div>
-      <div class="lang-row"><span><span data-lang="en">Catalan</span><span data-lang="sv">Katalanska</span></span><span><span data-lang="en">Native</span><span data-lang="sv">Modersmål</span></span></div>
-      <div class="lang-row"><span><span data-lang="en">Spanish</span><span data-lang="sv">Spanska</span></span><span><span data-lang="en">Native</span><span data-lang="sv">Modersmål</span></span></div>
-      <div class="lang-row"><span><span data-lang="en">English</span><span data-lang="sv">Engelska</span></span><span><span data-lang="en">Fluent</span><span data-lang="sv">Flytande</span></span></div>
-      <div class="lang-row"><span><span data-lang="en">Swedish</span><span data-lang="sv">Svenska</span></span><span><span data-lang="en">Professional</span><span data-lang="sv">Yrkesmässig</span></span></div>
-      <div class="lang-row"><span><span data-lang="en">Italian</span><span data-lang="sv">Italienska</span></span><span><span data-lang="en">Reading</span><span data-lang="sv">Läsförståelse</span></span></div>
-    </div>
-
+    <!-- EDUCATION (moved before Languages) -->
     <div class="sidebar-block">
       <div class="sidebar-label"><span data-lang="en">Education</span><span data-lang="sv">Utbildning</span></div>
 
@@ -546,6 +581,16 @@ body.lang-sv .sub-block { background: #e4e2db; }
         </div>
         <div class="edu-year">1998–03</div>
       </div>
+    </div>
+
+    <!-- LANGUAGES (moved after Education) -->
+    <div class="sidebar-block">
+      <div class="sidebar-label"><span data-lang="en">Languages</span><span data-lang="sv">Språk</span></div>
+      <div class="lang-row"><span><span data-lang="en">Catalan</span><span data-lang="sv">Katalanska</span></span><span><span data-lang="en">Native</span><span data-lang="sv">Modersmål</span></span></div>
+      <div class="lang-row"><span><span data-lang="en">Spanish</span><span data-lang="sv">Spanska</span></span><span><span data-lang="en">Native</span><span data-lang="sv">Modersmål</span></span></div>
+      <div class="lang-row"><span><span data-lang="en">English</span><span data-lang="sv">Engelska</span></span><span><span data-lang="en">Fluent</span><span data-lang="sv">Flytande</span></span></div>
+      <div class="lang-row"><span><span data-lang="en">Swedish</span><span data-lang="sv">Svenska</span></span><span><span data-lang="en">Professional</span><span data-lang="sv">Yrkesmässig</span></span></div>
+      <div class="lang-row"><span><span data-lang="en">Italian</span><span data-lang="sv">Italienska</span></span><span><span data-lang="en">Reading</span><span data-lang="sv">Läsförståelse</span></span></div>
     </div>
 
     <div class="sidebar-block">
