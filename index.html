@@ -98,18 +98,13 @@ body.lang-sv .topbar { background: var(--bg-sv); }
 .lang-btn:not(.active):hover { background: var(--accent-light); color: var(--accent); }
 
 .dl-btn {
-  font-family: 'Epilogue', sans-serif;
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0.38rem 1rem;
-  background: var(--ink);
-  color: #fff;
+  background: none;
   border: none;
-  border-radius: 99px;
+  padding: 0;
+  font: inherit;
+  color: #0a66c2;
+  text-decoration: underline;
   cursor: pointer;
-  transition: background 0.2s;
 }
 
 .dl-btn:hover { background: var(--accent); }
@@ -125,8 +120,6 @@ body.lang-sv .topbar { background: var(--bg-sv); }
   margin: 0 auto;
   border-bottom: 1px solid var(--rule);
 }
-
-.hero-text {}
 
 .hero-name {
   font-family: 'Fraunces', serif;
@@ -191,9 +184,7 @@ body.lang-sv .topbar { background: var(--bg-sv); }
   top: 57px;
 }
 
-.sidebar-block {
-  margin-bottom: 2rem;
-}
+.sidebar-block { margin-bottom: 2rem; }
 
 .sidebar-label {
   font-size: 0.62rem;
@@ -212,22 +203,6 @@ body.lang-sv .topbar { background: var(--bg-sv); }
   line-height: 1.65;
 }
 
-.tag-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-}
-
-.tag {
-  font-size: 0.75rem;
-  padding: 0.25rem 0.7rem;
-  border-radius: 99px;
-  background: var(--accent-light);
-  color: var(--accent);
-  font-weight: 400;
-  line-height: 1.4;
-}
-
 .lang-row {
   display: flex;
   justify-content: space-between;
@@ -238,7 +213,12 @@ body.lang-sv .topbar { background: var(--bg-sv); }
 }
 
 .lang-row:last-child { border-bottom: none; }
-.lang-row span:last-child { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.lang-row span:last-child {
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
 
 /* ── CONTENT ── */
 .content { padding-top: 2.5rem; }
@@ -322,7 +302,16 @@ body.lang-sv .section-header { background: #eeede8; }
   border-bottom: 1px solid #f0f0f0;
 }
 .comp-list li:last-child { border-bottom: none; }
-.comp-list li::before { content: ''; position: absolute; left: 0; top: 50%; width: 5px; height: 1.5px; background: var(--accent); transform: translateY(-50%); }
+.comp-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 5px;
+  height: 1.5px;
+  background: var(--accent);
+  transform: translateY(-50%);
+}
 
 /* Role */
 .role-header {
@@ -389,7 +378,7 @@ body.lang-sv .sub-block { background: #e4e2db; }
   margin-bottom: 0.5rem;
 }
 
-.sub-list { list-style: none; }
+.sub-list { list-style: none; margin: 0; padding-left: 0; }
 .sub-list li {
   font-size: 0.83rem;
   color: var(--mid);
@@ -397,7 +386,14 @@ body.lang-sv .sub-block { background: #e4e2db; }
   padding: 0.18rem 0 0.18rem 0.85rem;
   position: relative;
 }
-.sub-list li::before { content: '·'; position: absolute; left: 0; color: var(--accent); font-size: 1rem; line-height: 1.35; }
+.sub-list li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 1rem;
+  line-height: 1.35;
+}
 
 /* Education rows */
 .edu-row {
@@ -453,6 +449,7 @@ body.lang-sv .sub-block { background: #e4e2db; }
 }
 </style>
 </head>
+
 <body class="lang-en">
 
 <!-- TOP BAR -->
@@ -481,12 +478,12 @@ body.lang-sv .sub-block { background: #e4e2db; }
       <a href="mailto:rius.eli@gmail.com">rius.eli@gmail.com</a>
       <a href="https://github.com/elisendarius" target="_blank">github.com/elisendarius</a>
       <a href="https://www.linkedin.com/in/elisenda-rius-vilarrasa-35a38726/" target="_blank">LinkedIn</a>
-      <a href="https://certificate.berghs.com/kursintyg-elisenda-rius-vilarrasa-112865-ux-and-digital-product-design-a0067000026p2rvaas/?zone=truecrt&lang=en"  target="_blank">Certificate UX and Digital Product Design</a>    
+      <a href="https://certificate.berghs.com/kursintyg-elisenda-rius-vilarrasa-112865-ux-and-digital-product-design-a0067000026p2rvaas/?zone=truecrt&lang=en" target="_blank">Certificate UX and Digital Product Design</a>
       <a class="dl-btn"
       href="assets/certificate_VyS_Elisenda_Rius.pdf"
       download>
       Certificate Visualise your Science
-      </a>      
+      </a>
     </div>
   </div>
   <img class="hero-photo" src="assets/eli.png" alt="Elisenda Rius-Vilarrasa">
@@ -509,13 +506,15 @@ body.lang-sv .sub-block { background: #e4e2db; }
 
     <div class="sidebar-block">
       <div class="sidebar-label"><span data-lang="en">Education</span><span data-lang="sv">Utbildning</span></div>
-       <div class="edu-row">
+
+      <div class="edu-row">
         <div>
           <div class="edu-degree"><span data-lang="en">UX and Digital Product Design</span><span data-lang="sv">UX och Digital Produkt Design</span></div>
           <div class="edu-school">Berghs School of Communication, Sweden</div>
         </div>
         <div class="edu-year">2023–05</div>
       </div>
+
       <div class="edu-row">
         <div>
           <div class="edu-degree"><span data-lang="en">PhD, Quantitative Genetics</span><span data-lang="sv">Doktorsexamen, kvantitativ genetik</span></div>
@@ -523,6 +522,7 @@ body.lang-sv .sub-block { background: #e4e2db; }
         </div>
         <div class="edu-year">2005–09</div>
       </div>
+
       <div class="edu-row">
         <div>
           <div class="edu-degree"><span data-lang="en">MSc, Bioinformatics</span><span data-lang="sv">Masterexamen, bioinformatik</span></div>
@@ -530,6 +530,7 @@ body.lang-sv .sub-block { background: #e4e2db; }
         </div>
         <div class="edu-year">2004–05</div>
       </div>
+
       <div class="edu-row">
         <div>
           <div class="edu-degree"><span data-lang="en">Agronomist (BSc+MSc, 5 yr)</span><span data-lang="sv">Agronomexamen (5 år)</span></div>
@@ -573,37 +574,17 @@ body.lang-sv .sub-block { background: #e4e2db; }
         <div class="section-title"><span data-lang="en">Competencies</span><span data-lang="sv">Kompetenser</span></div>
       </div>
       <div class="section-body">
-        <!-- Postdoc SLU -->
-<div class="role-header">
-  <div class="role-title">
-    <span data-lang="en">Postdoctoral Researcher</span>
-    <span data-lang="sv">Postdoktor</span>
-  </div>
-  <div class="role-dates">2010– 2014</div>
-</div>
-<div class="role-org">Sveriges lantbruksuniversitet (SLU)</div>
-
-<ul class="sub-list" style="margin-bottom:1.25rem;">
-  <li data-lang="en">Developed and implemented DNA-based statistical models to improve sustainability and profitability in dairy production in collaboration with academia, industry and cooperative partners.</li>
-  <li data-lang="en">Principal researcher and project lead; secured funding to develop a sustainability index to improve sow longevity at farm level (project transferred to SLU upon transition to Växa).</li>
-  <li data-lang="en">Recipient of Knut and Alice Wallenberg Foundation award.</li>
-  <li data-lang="en">Research exchange at INIA (Spain) focusing on advanced statistical methods for genomic data analysis.</li>
-
-  <li data-lang="sv">Utvecklade och implementerade DNA-baserade statistiska modeller för ökad hållbarhet och lönsamhet i mjölkproduktionen i samverkan med akademi, näringsliv och kooperativa aktörer.</li>
-  <li data-lang="sv">Huvudansvarig forskare och projektledare; säkrade finansiering för utveckling av ett hållbarhetsindex för förbättrad sugglivslängd på gårdsnivå (projektet överfördes till SLU vid övergång till Växa).</li>
-  <li data-lang="sv">Mottagare av Knut och Alice Wallenbergs Stiftelses award.</li>
-  <li data-lang="sv">Forskningsutbyte vid INIA (Spanien) med fokus på avancerade statistiska metoder för genomisk analys.</li>
-</ul>
         <div class="comp-cols">
           <div>
             <div class="comp-group-title"><span data-lang="en">Research coordination &amp; strategy</span><span data-lang="sv">Forskningssamordning och strategi</span></div>
             <ul class="comp-list">
               <li data-lang="en">Scientific leadership and methodological responsibility</li>
-              <li data-lang="en">Research strategy and R&D prioritisation</li>
+              <li data-lang="en">Research strategy and R&amp;D prioritisation</li>
               <li data-lang="en">Initiation and development of research partnerships</li>
               <li data-lang="en">Scientific communication and decision support</li>
               <li data-lang="en">Multi-project planning across countries</li>
               <li data-lang="en">National and international research coordination</li>
+
               <li data-lang="sv">Vetenskapligt ledarskap och metodologiskt ansvar</li>
               <li data-lang="sv">Forskningsstrategi och prioritering av FoU-insatser</li>
               <li data-lang="sv">Initiering och utveckling av forskningssamarbeten</li>
@@ -612,6 +593,7 @@ body.lang-sv .sub-block { background: #e4e2db; }
               <li data-lang="sv">Samordning i nationell och internationell samverkan</li>
             </ul>
           </div>
+
           <div>
             <div class="comp-group-title"><span data-lang="en">Data, analysis &amp; capacity</span><span data-lang="sv">Dataanalys och kapacitetsutveckling</span></div>
             <ul class="comp-list">
@@ -621,6 +603,7 @@ body.lang-sv .sub-block { background: #e4e2db; }
               <li data-lang="en">External examiner and peer review</li>
               <li data-lang="en">Mentoring and competency development</li>
               <li data-lang="en">Scientific design and data visualisation</li>
+
               <li data-lang="sv">Uppföljning och kvalitetssäkring av analyser och resultat</li>
               <li data-lang="sv">Syntes av komplex vetenskaplig information</li>
               <li data-lang="sv">Strukturerat arbete med parallella arbetsflöden</li>
@@ -639,7 +622,71 @@ body.lang-sv .sub-block { background: #e4e2db; }
         <div class="section-icon">▸</div>
         <div class="section-title"><span data-lang="en">Experience</span><span data-lang="sv">Erfarenhet</span></div>
       </div>
+
       <div class="section-body">
+
+        <!-- Postdoc SLU (formatted like Växa) -->
+        <div class="role-header">
+          <div class="role-title">
+            <span data-lang="en">Postdoctoral Researcher</span>
+            <span data-lang="sv">Postdoktor</span>
+          </div>
+          <div class="role-dates">2010 – 2014</div>
+        </div>
+        <div class="role-org">Sveriges lantbruksuniversitet (SLU)</div>
+
+        <p class="role-summary">
+          <span data-lang="en">Developed and implemented DNA-based statistical models for improved sustainability and profitability in dairy production, in close collaboration with academia, industry and cooperative partners. Led a funded project to develop a sustainability index to support farm-level longevity in sows; project leadership was transferred to SLU upon transition to Växa.</span>
+          <span data-lang="sv">Utvecklade och implementerade DNA-baserade statistiska modeller för ökad hållbarhet och ekonomi i mjölkproduktionen, i nära samverkan med akademi, näringsliv och kooperativa aktörer. Ledde ett finansierat projekt för att utveckla ett hållbarhetsindex som stöd för förbättrad livslängd hos suggor på gårdsnivå; projektledarskapet överfördes till SLU i samband med övergången till Växa.</span>
+        </p>
+
+        <div class="sub-blocks" style="margin-bottom:1.25rem;">
+          <div class="sub-block">
+            <div class="sub-title"><span data-lang="en">Methods &amp; implementation</span><span data-lang="sv">Metod och implementering</span></div>
+            <ul class="sub-list">
+              <li data-lang="en">Developed statistical models leveraging DNA information for genomic analysis and applied decision support.</li>
+              <li data-lang="en">Implemented methods in practice with partners to ensure usable outputs and adoption.</li>
+
+              <li data-lang="sv">Utvecklade statistiska modeller baserade på DNA-information för genomisk analys och praktiskt beslutsstöd.</li>
+              <li data-lang="sv">Implementerade metoder i nära samverkan med partners för att säkerställa användbara resultat och tillämpning.</li>
+            </ul>
+          </div>
+
+          <div class="sub-block">
+            <div class="sub-title"><span data-lang="en">Leadership &amp; funding</span><span data-lang="sv">Ledarskap och finansiering</span></div>
+            <ul class="sub-list">
+              <li data-lang="en">Principal researcher; secured research funding and led delivery against objectives.</li>
+              <li data-lang="en">Developed a sustainability index concept to support improved sow longevity at farm level.</li>
+
+              <li data-lang="sv">Huvudansvarig forskare; säkrade finansiering och ledde genomförandet mot uppsatta mål.</li>
+              <li data-lang="sv">Utvecklade koncept för hållbarhetsindex för förbättrad sugglivslängd på gårdsnivå.</li>
+            </ul>
+          </div>
+
+          <div class="sub-block">
+            <div class="sub-title"><span data-lang="en">Collaboration</span><span data-lang="sv">Samverkan</span></div>
+            <ul class="sub-list">
+              <li data-lang="en">Worked at the interface of academia, industry and cooperative stakeholders.</li>
+              <li data-lang="en">Translated complex genomics into actionable practices and communication materials.</li>
+
+              <li data-lang="sv">Arbetade i gränslandet mellan akademi, näringsliv och kooperativa aktörer.</li>
+              <li data-lang="sv">Omsatte komplex genomik till tillämpning och kommunikativa underlag.</li>
+            </ul>
+          </div>
+
+          <div class="sub-block">
+            <div class="sub-title"><span data-lang="en">Awards &amp; exchange</span><span data-lang="sv">Utmärkelse och utbyte</span></div>
+            <ul class="sub-list">
+              <li data-lang="en">Recipient of Knut and Alice Wallenberg Foundation award.</li>
+              <li data-lang="en">Research exchange at INIA (Spain) focused on alternative statistical approaches for DNA/genomic data.</li>
+
+              <li data-lang="sv">Mottagare av Knut och Alice Wallenbergs Stiftelses award.</li>
+              <li data-lang="sv">Forskningsutbyte vid INIA (Spanien) med fokus på alternativa statistiska metoder för DNA-/genomiska data.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Växa -->
         <div class="role-header">
           <div class="role-title">
             <span data-lang="en">Principal Geneticist — Scientific Lead</span>
@@ -648,6 +695,7 @@ body.lang-sv .sub-block { background: #e4e2db; }
           <div class="role-dates">2014 – <span data-lang="en">present</span><span data-lang="sv">pågående</span></div>
         </div>
         <div class="role-org">Växa Sverige</div>
+
         <p class="role-summary">
           <span data-lang="en">Research coordination, prioritisation and quality assurance in national and international collaboration. Functional scientific leadership covering methodology, quality and prioritisation — without line management or HR responsibilities.</span>
           <span data-lang="sv">Samordning, prioritering och kvalitetssäkring av forsknings- och analysverksamhet i nationell och internationell samverkan. Funktionellt vetenskapligt ledarskap utan personalansvar eller linjeledning.</span>
@@ -660,43 +708,51 @@ body.lang-sv .sub-block { background: #e4e2db; }
               <li data-lang="en">Coordinate research activities across organisations and countries</li>
               <li data-lang="en">Plan and prioritise work across parallel projects</li>
               <li data-lang="en">Initiate and develop international research collaborations</li>
+
               <li data-lang="sv">Samordnar aktiviteter mellan organisationer och länder</li>
               <li data-lang="sv">Planerar och prioriterar parallella projekt</li>
               <li data-lang="sv">Initierar och utvecklar internationella samarbeten</li>
             </ul>
           </div>
+
           <div class="sub-block">
             <div class="sub-title"><span data-lang="en">Quality &amp; monitoring</span><span data-lang="sv">Kvalitet och uppföljning</span></div>
             <ul class="sub-list">
               <li data-lang="en">Review analyses, assumptions and scientific documentation</li>
               <li data-lang="en">Ensure robustness and reproducibility of results</li>
               <li data-lang="en">Track project progress across timelines and budgets</li>
+
               <li data-lang="sv">Granskar analyser, antaganden och dokumentation</li>
               <li data-lang="sv">Säkerställer robusthet och reproducerbarhet</li>
               <li data-lang="sv">Följer upp projektprogression mot mål och budget</li>
             </ul>
           </div>
+
           <div class="sub-block">
             <div class="sub-title"><span data-lang="en">Analysis &amp; decision support</span><span data-lang="sv">Analys och beslutsstöd</span></div>
             <ul class="sub-list">
               <li data-lang="en">Synthesise scientific findings into management decision materials</li>
               <li data-lang="en">Provide strategic input for research prioritisation</li>
+
               <li data-lang="sv">Syntetiserar vetenskapliga resultat till beslutsunderlag</li>
               <li data-lang="sv">Bidrar med strategiska underlag för prioritering</li>
             </ul>
           </div>
+
           <div class="sub-block">
             <div class="sub-title"><span data-lang="en">Capacity &amp; networks</span><span data-lang="sv">Kapacitet och nätverk</span></div>
             <ul class="sub-list">
               <li data-lang="en">Methodological support and mentoring within genetics group</li>
               <li data-lang="en">Participate in doctoral training and peer review</li>
               <li data-lang="en">Active in international research networks</li>
+
               <li data-lang="sv">Metod- och analysstöd och mentorskap inom gruppen</li>
               <li data-lang="sv">Medverkar i forskarutbildning och peer review</li>
               <li data-lang="sv">Aktiv i internationella forskningsnätverk</li>
             </ul>
           </div>
         </div>
+
       </div>
     </div>
 
@@ -715,5 +771,6 @@ body.lang-sv .sub-block { background: #e4e2db; }
     document.documentElement.lang = lang;
   }
 </script>
+
 </body>
 </html>
