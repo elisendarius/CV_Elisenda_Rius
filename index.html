@@ -97,6 +97,7 @@ body.lang-sv .topbar { background: var(--bg-sv); }
 .lang-btn.active { background: var(--accent); color: #fff; }
 .lang-btn:not(.active):hover { background: var(--accent-light); color: var(--accent); }
 
+/* Link-style button (used for PDF + certificate link) */
 .dl-btn {
   background: none;
   border: none;
@@ -107,7 +108,8 @@ body.lang-sv .topbar { background: var(--bg-sv); }
   cursor: pointer;
 }
 
-.dl-btn:hover { background: var(--accent); }
+/* remove background hover to keep it link-like */
+.dl-btn:hover { color: var(--accent); }
 
 /* ── HERO ── */
 .hero {
@@ -138,23 +140,6 @@ body.lang-sv .topbar { background: var(--bg-sv); }
   margin-bottom: 1.5rem;
   letter-spacing: 0.01em;
 }
-
-.hero-contact {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem 1.2rem;
-  font-size: 0.82rem;
-  color: var(--mid);
-}
-
-.hero-contact a {
-  color: var(--mid);
-  text-decoration: none;
-  border-bottom: 1px solid var(--rule);
-  transition: color 0.2s, border-color 0.2s;
-}
-
-.hero-contact a:hover { color: var(--accent); border-color: var(--accent); }
 
 .hero-photo {
   width: 130px;
@@ -201,6 +186,27 @@ body.lang-sv .topbar { background: var(--bg-sv); }
   font-size: 0.9rem;
   color: var(--mid);
   line-height: 1.65;
+}
+
+/* NEW: sidebar contact */
+.sidebar-contact {
+  font-size: 0.82rem;
+  color: var(--mid);
+  line-height: 1.6;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.sidebar-contact a {
+  color: var(--mid);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  width: fit-content;
+}
+
+.sidebar-contact a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
 .lang-row {
@@ -472,19 +478,7 @@ body.lang-sv .sub-block { background: #e4e2db; }
       <span data-lang="en">Principal Geneticist · Research Coordinator</span>
       <span data-lang="sv">Huvudgenetiker · Forskningssamordnare</span>
     </div>
-    <div class="hero-contact">
-      <span>Uppsala, Sweden</span>
-      <span>+46 76 103 48 01</span>
-      <a href="mailto:rius.eli@gmail.com">rius.eli@gmail.com</a>
-      <a href="https://github.com/elisendarius" target="_blank">github.com/elisendarius</a>
-      <a href="https://www.linkedin.com/in/elisenda-rius-vilarrasa-35a38726/" target="_blank">LinkedIn</a>
-      <a href="https://certificate.berghs.com/kursintyg-elisenda-rius-vilarrasa-112865-ux-and-digital-product-design-a0067000026p2rvaas/?zone=truecrt&lang=en" target="_blank">Certificate UX and Digital Product Design</a>
-      <a class="dl-btn"
-      href="assets/certificate_VyS_Elisenda_Rius.pdf"
-      download>
-      Certificate Visualise your Science
-      </a>
-    </div>
+    <!-- Contact moved to sidebar -->
   </div>
   <img class="hero-photo" src="assets/eli.png" alt="Elisenda Rius-Vilarrasa">
 </div>
@@ -494,6 +488,20 @@ body.lang-sv .sub-block { background: #e4e2db; }
 
   <!-- SIDEBAR -->
   <aside class="sidebar">
+
+    <!-- NEW: CONTACT (before Languages) -->
+    <div class="sidebar-block">
+      <div class="sidebar-label"><span data-lang="en">Contact</span><span data-lang="sv">Kontakt</span></div>
+      <div class="sidebar-contact">
+        <span>Uppsala, Sweden</span>
+        <span>+46 76 103 48 01</span>
+        <a href="mailto:rius.eli@gmail.com">rius.eli@gmail.com</a>
+        <a href="https://github.com/elisendarius" target="_blank">github.com/elisendarius</a>
+        <a href="https://www.linkedin.com/in/elisenda-rius-vilarrasa-35a38726/" target="_blank">LinkedIn</a>
+        <a href="https://certificate.berghs.com/kursintyg-elisenda-rius-vilarrasa-112865-ux-and-digital-product-design-a0067000026p2rvaas/?zone=truecrt&lang=en" target="_blank">Certificate UX and Digital Product Design</a>
+        <a class="dl-btn" href="assets/certificate_VyS_Elisenda_Rius.pdf" download>Certificate Visualise your Science</a>
+      </div>
+    </div>
 
     <div class="sidebar-block">
       <div class="sidebar-label"><span data-lang="en">Languages</span><span data-lang="sv">Språk</span></div>
@@ -639,7 +647,7 @@ body.lang-sv .sub-block { background: #e4e2db; }
           <span data-lang="sv">Samordning, prioritering och kvalitetssäkring av forsknings- och analysverksamhet i nationell och internationell samverkan. Funktionellt vetenskapligt ledarskap utan personalansvar eller linjeledning.</span>
         </p>
 
-        <div class="sub-blocks">
+        <div class="sub-blocks" style="margin-bottom:1.25rem;">
           <div class="sub-block">
             <div class="sub-title"><span data-lang="en">Coordination &amp; governance</span><span data-lang="sv">Samordning och styrning</span></div>
             <ul class="sub-list">
@@ -691,12 +699,7 @@ body.lang-sv .sub-block { background: #e4e2db; }
           </div>
         </div>
 
-      </div>
-    </div>
-
-
-        
-        <!-- Postdoc SLU (formatted like Växa) -->
+        <!-- Postdoc SLU -->
         <div class="role-header">
           <div class="role-title">
             <span data-lang="en">Postdoctoral Researcher</span>
@@ -706,8 +709,6 @@ body.lang-sv .sub-block { background: #e4e2db; }
         </div>
         <div class="role-org">Sveriges lantbruksuniversitet (SLU)</div>
 
-        <p class="role-summary">
-        </p>
         <div class="sub-blocks" style="margin-bottom:1.25rem;">
           <div class="sub-block">
             <div class="sub-title"><span data-lang="en">Methods &amp; implementation</span><span data-lang="sv">Metod och implementering</span></div>
@@ -753,7 +754,10 @@ body.lang-sv .sub-block { background: #e4e2db; }
             </ul>
           </div>
         </div>
-     
+
+      </div>
+    </div>
+
   </div><!-- /content -->
 </div><!-- /main -->
 
