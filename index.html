@@ -374,10 +374,14 @@ body.lang-sv .section-header { background: #eeede8; }
   border-bottom: 1px solid #f0f0f0;
 }
 
+/* ✅ FIX: ensure the “green boxes” stay padded inside the section,
+   and add consistent spacing before the next role (e.g., Post-doc). */
 .sub-blocks {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.75rem; /* key spacing so next caption doesn't crash into it */
 }
 
 .sub-block {
@@ -595,7 +599,7 @@ body.lang-sv .sub-block { background: #e4e2db; }
         </div>
         <div class="edu-year">2023</div>
       </div>
-      
+
       <div class="edu-row">
         <div>
           <div class="edu-degree"><span data-lang="en">PhD, Quantitative Genetics</span><span data-lang="sv">Doktorsexamen, kvantitativ genetik</span></div>
@@ -714,88 +718,109 @@ body.lang-sv .sub-block { background: #e4e2db; }
         <div class="section-title"><span data-lang="en">Experience</span><span data-lang="sv">Erfarenhet</span></div>
       </div>
 
-      <div class="sub-blocks" style="margin-top:1.25rem;">
+      <!-- ✅ FIX: Experience content must be inside section-body to preserve padding.
+           This prevents the green boxes from touching the outer card edge. -->
+      <div class="section-body">
 
-  <div class="sub-block">
-    <div class="sub-title">
-      <span data-lang="en">Major scientific and technical achievements</span>
-      <span data-lang="sv">Större vetenskapliga och tekniska resultat</span>
-    </div>
-    <ul class="sub-list">
-      <li data-lang="en">Scientific lead for development and operational implementation of the first routine Nordic genetic evaluation for purebred beef cattle (NAV)</li>
-      <li data-lang="en">Designed methodological framework for evaluation of purebred beef populations</li>
-      <li data-lang="en">Led development, validation and deployment of the evaluation system</li>
-      <li data-lang="en">Coordinated collaboration across Nordic countries, breeding organisations and data providers</li>
-      <li data-lang="en">Delivered a fully operational evaluation integrated into Nordic breeding infrastructure</li>
+        <!-- Växa -->
+        <div class="role-header">
+          <div class="role-title">
+            <span data-lang="en">Principal Geneticist — Scientific Lead</span>
+            <span data-lang="sv">Huvudgenetiker — Vetenskaplig ledare</span>
+          </div>
+          <div class="role-dates">2014 – <span data-lang="en">present</span><span data-lang="sv">pågående</span></div>
+        </div>
+        <div class="role-org">Växa Sverige</div>
 
-      <li data-lang="sv">Vetenskaplig huvudansvarig för utveckling och implementering av den första rutinmässiga nordiska genetiska utvärderingen för köttrasdjur (NAV)</li>
-      <li data-lang="sv">Utformade metodramverk för utvärdering av renrasiga köttpopulationer</li>
-      <li data-lang="sv">Ledde utveckling, validering och implementering av utvärderingssystemet</li>
-      <li data-lang="sv">Samordnade samarbete mellan nordiska länder, avelsorganisationer och dataleverantörer</li>
-      <li data-lang="sv">Levererade ett fullt operativt system integrerat i nordisk avelsinfrastruktur</li>
-    </ul>
-  </div>
+        <p class="role-summary">
+          <span data-lang="en">Research coordination, prioritisation and quality assurance in national and international collaboration. Functional scientific leadership covering methodology, quality and prioritisation — without line management or HR responsibilities.</span>
+          <span data-lang="sv">Samordning, prioritering och kvalitetssäkring av forsknings- och analysverksamhet i nationell och internationell samverkan. Funktionellt vetenskapligt ledarskap utan personalansvar eller linjeledning.</span>
+        </p>
 
-  <div class="sub-block">
-    <div class="sub-title">
-      <span data-lang="en">Research programme leadership</span>
-      <span data-lang="sv">Ledning av forskningsprogram</span>
-    </div>
-    <ul class="sub-list">
-      <li data-lang="en">Project leader for Red dairy breeds within the Global Methane Genetics Initiative (USD 900,000 programme)</li>
-      <li data-lang="en">Coordinate international research based on genomic and phenotypic data from ~12,000 cattle</li>
-      <li data-lang="en">Lead national methane research programmes in Sweden (10 million SEK total funding)</li>
-      <li data-lang="en">Integrate methane phenotyping and genetic evaluation into operational breeding programmes</li>
-      <li data-lang="en">Coordinate collaboration between research organisations, breeding companies and experimental infrastructures</li>
+        <!-- Expanded achievements / governance (now correctly padded + spaced) -->
+        <div class="sub-blocks">
 
-      <li data-lang="sv">Projektledare för röda mjölkraser inom Global Methane Genetics Initiative (programbudget 900 000 USD)</li>
-      <li data-lang="sv">Samordnar internationell forskning baserad på genomiska och fenotypiska data från cirka 12 000 djur</li>
-      <li data-lang="sv">Leder nationella forskningsprogram om metan i Sverige (totalt 10 miljoner SEK)</li>
-      <li data-lang="sv">Integrerar metanfenotypning och genetisk utvärdering i operativa avelsprogram</li>
-      <li data-lang="sv">Samordnar samarbete mellan forskningsorganisationer, avelsföretag och försöksinfrastrukturer</li>
-    </ul>
-  </div>
+          <div class="sub-block">
+            <div class="sub-title">
+              <span data-lang="en">Major scientific and technical achievements</span>
+              <span data-lang="sv">Större vetenskapliga och tekniska resultat</span>
+            </div>
+            <ul class="sub-list">
+              <li data-lang="en">Scientific lead for development and operational implementation of the first routine Nordic genetic evaluation for purebred beef cattle (NAV)</li>
+              <li data-lang="en">Designed methodological framework for evaluation of purebred beef populations</li>
+              <li data-lang="en">Led development, validation and deployment of the evaluation system</li>
+              <li data-lang="en">Coordinated collaboration across Nordic countries, breeding organisations and data providers</li>
+              <li data-lang="en">Delivered a fully operational evaluation integrated into Nordic breeding infrastructure</li>
 
-  <div class="sub-block">
-    <div class="sub-title">
-      <span data-lang="en">International scientific governance and representation</span>
-      <span data-lang="sv">Internationell vetenskaplig styrning och representation</span>
-    </div>
-    <ul class="sub-list">
-      <li data-lang="en">Country representative in ICAR Interbeef working group</li>
-      <li data-lang="en">Contribute to international harmonisation of beef cattle genetic evaluation</li>
-      <li data-lang="en">Country representative in Swedish EAAP organisation</li>
-      <li data-lang="en">Scientific Advisory Committee member, Nordic Cattle Genetic Evaluation (NAV)</li>
-      <li data-lang="en">Contribute to methodological standards, research prioritisation and funding strategy</li>
+              <li data-lang="sv">Vetenskaplig huvudansvarig för utveckling och implementering av den första rutinmässiga nordiska genetiska utvärderingen för renrasiga köttraser (NAV)</li>
+              <li data-lang="sv">Utformade metodramverk för utvärdering av renrasiga köttpopulationer</li>
+              <li data-lang="sv">Ledde utveckling, validering och implementering av utvärderingssystemet</li>
+              <li data-lang="sv">Samordnade samarbete mellan nordiska länder, avelsorganisationer och dataleverantörer</li>
+              <li data-lang="sv">Levererade ett fullt operativt system integrerat i nordisk avelsinfrastruktur</li>
+            </ul>
+          </div>
 
-      <li data-lang="sv">Sveriges representant i ICAR:s arbetsgrupp Interbeef</li>
-      <li data-lang="sv">Bidrar till internationell harmonisering av genetisk utvärdering för nötkreatur</li>
-      <li data-lang="sv">Sveriges representant i svenska EAAP-organisationen</li>
-      <li data-lang="sv">Ledamot i Scientific Advisory Committee, Nordic Cattle Genetic Evaluation (NAV)</li>
-      <li data-lang="sv">Bidrar till metodstandarder, forskningsprioritering och finansieringsstrategi</li>
-    </ul>
-  </div>
+          <div class="sub-block">
+            <div class="sub-title">
+              <span data-lang="en">Research programme leadership</span>
+              <span data-lang="sv">Ledning av forskningsprogram</span>
+            </div>
+            <ul class="sub-list">
+              <li data-lang="en">Project leader for Red dairy breeds within the Global Methane Genetics Initiative (USD 900,000 programme)</li>
+              <li data-lang="en">Coordinate international research based on genomic and phenotypic data from ~12,000 cattle</li>
+              <li data-lang="en">Lead national methane research programmes in Sweden (10 million SEK total funding)</li>
+              <li data-lang="en">Integrate methane phenotyping and genetic evaluation into operational breeding programmes</li>
+              <li data-lang="en">Coordinate collaboration between research organisations, breeding companies and experimental infrastructures</li>
 
-  <div class="sub-block">
-    <div class="sub-title">
-      <span data-lang="en">Nordic evaluation research and development</span>
-      <span data-lang="sv">Nordisk utveckling av genetisk utvärdering</span>
-    </div>
-    <ul class="sub-list">
-      <li data-lang="en">Development of genomic evaluation methodology</li>
-      <li data-lang="en">Integration of genomic and conventional evaluation systems</li>
-      <li data-lang="en">Cross-population and breed-specific evaluation strategies</li>
-      <li data-lang="en">Methodological development for beef breed evaluation</li>
+              <li data-lang="sv">Projektledare för röda mjölkraser inom Global Methane Genetics Initiative (programbudget 900 000 USD)</li>
+              <li data-lang="sv">Samordnar internationell forskning baserad på genomiska och fenotypiska data från cirka 12 000 djur</li>
+              <li data-lang="sv">Leder nationella forskningsprogram om metan i Sverige (totalt 10 miljoner SEK)</li>
+              <li data-lang="sv">Integrerar metanfenotypning och genetisk utvärdering i operativa avelsprogram</li>
+              <li data-lang="sv">Samordnar samarbete mellan forskningsorganisationer, avelsföretag och försöksinfrastrukturer</li>
+            </ul>
+          </div>
 
-      <li data-lang="sv">Utveckling av metodik för genomisk utvärdering</li>
-      <li data-lang="sv">Integrering av genomiska och konventionella utvärderingssystem</li>
-      <li data-lang="sv">Utvärdering över populationer och ras-specifika modeller</li>
-      <li data-lang="sv">Metodutveckling för genetisk utvärdering av köttraser</li>
-    </ul>
-  </div>
+          <div class="sub-block">
+            <div class="sub-title">
+              <span data-lang="en">International scientific governance</span>
+              <span data-lang="sv">Internationell vetenskaplig styrning</span>
+            </div>
+            <ul class="sub-list">
+              <li data-lang="en">Country representative in ICAR Interbeef working group</li>
+              <li data-lang="en">Contribute to harmonisation of beef cattle genetic evaluation across countries</li>
+              <li data-lang="en">Country representative in Swedish EAAP organisation</li>
+              <li data-lang="en">Scientific Advisory Committee member, Nordic Cattle Genetic Evaluation (NAV)</li>
+              <li data-lang="en">Contribute to methodological standards, research prioritisation and funding strategy</li>
 
-</div>
-        <!-- Postdoc SLU -->
+              <li data-lang="sv">Sveriges representant i ICAR:s arbetsgrupp Interbeef</li>
+              <li data-lang="sv">Bidrar till harmonisering av genetisk utvärdering för köttraser mellan länder</li>
+              <li data-lang="sv">Sveriges representant i svenska EAAP-organisationen</li>
+              <li data-lang="sv">Ledamot i Scientific Advisory Committee, Nordic Cattle Genetic Evaluation (NAV)</li>
+              <li data-lang="sv">Bidrar till metodstandarder, forskningsprioritering och finansieringsstrategi</li>
+            </ul>
+          </div>
+
+          <div class="sub-block">
+            <div class="sub-title">
+              <span data-lang="en">NAV R&amp;D activities</span>
+              <span data-lang="sv">FoU inom NAV</span>
+            </div>
+            <ul class="sub-list">
+              <li data-lang="en">Development of genomic evaluation methodology</li>
+              <li data-lang="en">Integration of genomic and conventional evaluation systems</li>
+              <li data-lang="en">Cross-population and breed-specific evaluation strategies</li>
+              <li data-lang="en">Methodological development for beef breed evaluation</li>
+
+              <li data-lang="sv">Utveckling av metodik för genomisk utvärdering</li>
+              <li data-lang="sv">Integrering av genomiska och konventionella utvärderingssystem</li>
+              <li data-lang="sv">Utvärdering över populationer och ras-specifika modeller</li>
+              <li data-lang="sv">Metodutveckling för genetisk utvärdering av köttraser</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Postdoc SLU (now has proper breathing room) -->
         <div class="role-header">
           <div class="role-title">
             <span data-lang="en">Postdoctoral Researcher</span>
@@ -807,11 +832,11 @@ body.lang-sv .sub-block { background: #e4e2db; }
 
         <p class="role-summary">
           <span data-lang="en">Development and practical implementation of statistical models based on DNA information to improve dairy farms sustainability and economics, in close collaboration with academia, industry and stakeholders.</span>
-          <span data-lang="sv">Utveckling och praktisk implementering av statistiska modeller baserade på DNA-information för att förbättra hållbarhet och ekonomi i mjölkproduktionen, i nära samverkan med akademi och näringsliv..</span>
+          <span data-lang="sv">Utveckling och praktisk implementering av statistiska modeller baserade på DNA-information för att förbättra hållbarhet och ekonomi i mjölkproduktionen, i nära samverkan med akademi och näringsliv.</span>
         </p>
 
-      </div>
-    </div>
+      </div><!-- /section-body -->
+    </div><!-- /section-block (Experience) -->
 
   </div><!-- /content -->
 </div><!-- /main -->
